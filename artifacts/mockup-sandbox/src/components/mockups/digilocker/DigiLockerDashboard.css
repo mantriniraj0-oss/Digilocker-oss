@@ -1,0 +1,141 @@
+.aadhaar-viewer {
+  padding: 60px 16px 16px;
+}
+
+.aadhaar-viewer__image {
+  max-height: calc(100dvh - 76px);
+}
+
+.aadhaar-viewer--aadhaar {
+  padding: 0;
+  background: #fff;
+}
+
+.aadhaar-viewer--aadhaar .aadhaar-viewer__dialog {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.aadhaar-viewer--aadhaar .aadhaar-viewer__image {
+  position: fixed;
+  top: 10.7vh;
+  left: 50%;
+  width: min(88.2vw, 540px, calc(76vh / 1.8324));
+  height: auto;
+  max-width: none;
+  max-height: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+}
+
+.aadhaar-viewer__back,
+.aadhaar-viewer__profile {
+  position: fixed;
+  z-index: 30;
+  top: 12px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  background: rgba(25, 25, 30, 0.78);
+  color: #fff;
+  cursor: pointer;
+}
+
+.aadhaar-viewer__back {
+  top: calc(3.6vh - 20px);
+  left: calc(7vw - 20px);
+}
+
+.aadhaar-viewer--aadhaar .aadhaar-viewer__back {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #161616;
+}
+
+.aadhaar-viewer__profile {
+  right: 12px;
+  overflow: hidden;
+  background: #f5f3f7;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.92);
+}
+
+.aadhaar-viewer--aadhaar .aadhaar-viewer__profile {
+  top: 0.7vh;
+  right: 2.4vw;
+  width: min(12.6vw, 62px);
+  height: min(12.6vw, 62px);
+  border: 2px solid #89c990;
+  background: #fff;
+  box-shadow: none;
+}
+
+.aadhaar-viewer__profile-crop {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.aadhaar-viewer__bottom-nav {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 4.9vh;
+  left: 0;
+  display: flex;
+  height: 34px;
+  align-items: center;
+  justify-content: space-around;
+  color: #888;
+}
+
+.aadhaar-viewer__bottom-nav svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.aadhaar-viewer__bottom-nav svg:nth-child(2) {
+  fill: none;
+}
+
+.aadhaar-viewer__gesture-bar {
+  position: fixed;
+  z-index: 10;
+  bottom: 2.2vh;
+  left: 50%;
+  width: min(35vw, 220px);
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #aaa;
+}
+
+.aadhaar-viewer__back:focus-visible,
+.aadhaar-viewer__profile:focus-visible {
+  outline: 3px solid #ffb000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 360px) {
+  .aadhaar-viewer {
+    padding: 56px 8px 8px;
+  }
+
+  .aadhaar-viewer__image {
+    max-height: calc(100dvh - 64px);
+  }
+}
