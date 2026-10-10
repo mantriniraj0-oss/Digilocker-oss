@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import "./_group.css";
 
 export function DigiLockerDashboard() {
-  const [aadhaarOpen, setAadhaarOpen] = useState(false);
+  const [openImage, setOpenImage] = useState<"aadhaar" | "profile" | null>(
+    null,
+  );
 
   useEffect(() => {
-    if (!aadhaarOpen) return;
+    if (!openImage) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setAadhaarOpen(false);
+      if (event.key === "Escape") setOpenImage(null);
     };
     const previousOverflow = document.body.style.overflow;
 
@@ -20,7 +22,7 @@ export function DigiLockerDashboard() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [aadhaarOpen]);
+  }, [openImage]);
 
   return (
     <main className="digilocker-demo">
@@ -40,37 +42,65 @@ export function DigiLockerDashboard() {
           type="button"
           aria-label="Open the Aadhaar card image"
           title="Open Aadhaar card"
-          onClick={() => setAadhaarOpen(true)}
+          onClick={() => setOpenImage("aadhaar")}
+        />
+        <button
+          type="button"
+          aria-label="Open the profile image"
+          title="Open profile image"
+          onClick={() => setOpenImage("profile")}
+          style={{
+            position: "absolute",
+            top: "5.05%",
+            left: "82.8%",
+            width: "14%",
+            height: "3.5%",
+            padding: 0,
+            border: 0,
+            borderRadius: "50%",
+            background: "transparent",
+            cursor: "pointer",
+          }}
         />
       </figure>
-      {aadhaarOpen && (
+      {openImage && (
         <div
           className="aadhaar-viewer"
           onClick={(event) => {
-            if (event.target === event.currentTarget) setAadhaarOpen(false);
+            if (event.target === event.currentTarget) setOpenImage(null);
           }}
         >
           <section
             className="aadhaar-viewer__dialog"
             role="dialog"
             aria-modal="true"
-            aria-label="Aadhaar card image"
+            aria-label={
+              openImage === "profile" ? "Profile image" : "Aadhaar card image"
+            }
           >
             <button
               className="aadhaar-viewer__close"
               type="button"
-              aria-label="Close Aadhaar card image"
+              aria-label="Close image viewer"
               autoFocus
-              onClick={() => setAadhaarOpen(false)}
+              onClick={() => setOpenImage(null)}
             >
               ×
             </button>
             <img
               className="aadhaar-viewer__image"
-              src="/__mockup/images/aadhaar-card-detail.png"
-              alt="The Aadhaar card image provided for this visual demo, shown without edits."
-              width="1080"
-              height="1979"
+              src={
+                openImage === "profile"
+                  ? "/__mockup/images/digilocker-profile-open.png"
+                  : "/__mockup/images/aadhaar-card-detail.png"
+              }
+              alt={
+                openImage === "profile"
+                  ? "The image provided to open from the profile photo, shown without edits."
+                  : "The Aadhaar card image provided for this visual demo, shown without edits."
+              }
+              width={openImage === "profile" ? "442" : "1080"}
+              height={openImage === "profile" ? "918" : "1979"}
             />
           </section>
         </div>
