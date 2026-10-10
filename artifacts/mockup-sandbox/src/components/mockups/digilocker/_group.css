@@ -17,7 +17,7 @@
 
 .digilocker-demo__notice {
   position: fixed;
-  z-index: 5;
+  z-index: 40;
   top: 6px;
   left: 50%;
   transform: translateX(-50%);
@@ -38,6 +38,7 @@
 }
 
 .digilocker-demo__screen {
+  position: relative;
   width: min(100vw, 432px);
   margin: 0;
   aspect-ratio: 240 / 994;
@@ -52,8 +53,85 @@
   object-fit: fill;
 }
 
+.digilocker-demo__aadhaar-trigger {
+  position: absolute;
+  top: 13.55%;
+  left: 3.5%;
+  width: 93%;
+  height: 11.1%;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.digilocker-demo__aadhaar-trigger:focus-visible {
+  outline: 3px solid #ffb000;
+  outline-offset: 2px;
+}
+
+.aadhaar-viewer {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(14, 14, 20, 0.88);
+}
+
+.aadhaar-viewer__dialog {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.aadhaar-viewer__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 540px);
+  max-height: calc(100dvh - 32px);
+  object-fit: contain;
+}
+
+.aadhaar-viewer__close {
+  position: fixed;
+  z-index: 30;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  background: rgba(25, 25, 30, 0.88);
+  color: #fff;
+  font: 28px/1 sans-serif;
+  cursor: pointer;
+}
+
+.aadhaar-viewer__close:focus-visible {
+  outline: 3px solid #ffb000;
+  outline-offset: 3px;
+}
+
 @media (max-width: 360px) {
   .digilocker-demo__notice {
     font-size: 7px;
+  }
+
+  .aadhaar-viewer {
+    padding: 8px;
+  }
+
+  .aadhaar-viewer__image {
+    max-height: calc(100dvh - 16px);
   }
 }
