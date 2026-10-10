@@ -1,0 +1,59 @@
+.digilocker-demo {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding: 31px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+  background: #e9e8ee;
+}
+
+.digilocker-demo *,
+.digilocker-demo *::before,
+.digilocker-demo *::after {
+  box-sizing: border-box;
+}
+
+.digilocker-demo__notice {
+  position: fixed;
+  z-index: 5;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 16px);
+  padding: 4px 8px;
+  border: 1px solid rgba(72, 65, 87, 0.12);
+  border-radius: 3px;
+  background: rgba(248, 247, 250, 0.96);
+  color: #625d6d;
+  font-family: "DM Sans", "Trebuchet MS", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.045em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.digilocker-demo__screen {
+  width: min(100vw, 432px);
+  margin: 0;
+  aspect-ratio: 240 / 994;
+  overflow: hidden;
+  background: #fff;
+}
+
+.digilocker-demo__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+@media (max-width: 360px) {
+  .digilocker-demo__notice {
+    font-size: 7px;
+  }
+}
